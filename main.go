@@ -169,7 +169,7 @@ func info(e chan bool) {
 			time.Sleep(time.Second)
 			ae = time.Now().UnixNano() - ae
 
-			prefix, rem := getPrefix(float64(inc) / (float64(ae) / 1000000), a_siprefix)
+			prefix, rem := getPrefix((float64(inc) / (float64(ae) / 1000000)) / float64(runtime.NumCPU()), a_siprefix)
 			prefix2, rem2 := getPrefix(math.Abs(float64(ae) - 1000000000), a_timeprefix)
 			fmt.Printf(  "%.2f%s hashes per second. (S.I.: %.3f%s)\n", rem, prefix, rem2, prefix2)
 			inc = int64(0)
